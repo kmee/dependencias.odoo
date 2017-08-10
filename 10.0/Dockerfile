@@ -1,9 +1,10 @@
 FROM ubuntu:16.04
-MAINTAINER KMEE infra@kmee.com.br version:0.1
+MAINTAINER KMEE dev@kmee.com.br version:0.1
+
 RUN set -x; \
-        locale-gen en_US en_US.UTF-8 pt_BR.UTF-8 \
-        && apt-get update \
-        && apt-get install -y --no-install-recommends \
+        apt-get update \
+	&& apt-get install -y --no-install-recommends \
+            locales \
             ca-certificates \
             nano \
             wget \
@@ -50,6 +51,8 @@ RUN set -x; \
             libjpeg-dev \
             xfonts-75dpi \
             xfonts-base \
+            postgresql-client* \
+        && locale-gen en_US en_US.UTF-8 pt_BR.UTF-8 \
         && echo "CURL iniciando..." \
 #
 # Instalando o wkhtmltox
@@ -65,9 +68,8 @@ RUN set -x; \
 #
         && apt-get clean \
         && adduser --system --quiet --shell=/bin/bash --home=/opt/odoo --gecos 'ODOO' --group odoo
-        && echo 'export PATH=$PATH:/usr/local/bin' >> /home/odoo/.bashrc \
-        && echo 'export TERM=xterm' >> /home/odoo/.bashrc \
-        && echo 'export LANG=pt_BR.UTF-8' >> /home/odoo/.bashrc \
-        && echo 'export LANGUAGE=pt_BR:en_GB' >> /home/odoo/.bashrc \
-        && echo 'export LC_ALL=pt_BR.UTF-8' >> /home/odoo/.bashrc
-
+#        && echo 'export PATH=$PATH:/usr/local/bin' >> /home/odoo/.bashrc \
+#        && echo 'export TERM=xterm' >> /home/odoo/.bashrc \
+#        && echo 'export LANG=pt_BR.UTF-8' >> /home/odoo/.bashrc \
+#        && echo 'export LANGUAGE=pt_BR:en_GB' >> /home/odoo/.bashrc \
+#        && echo 'export LC_ALL=pt_BR.UTF-8' >> /home/odoo/.bashrc
