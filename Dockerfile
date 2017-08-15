@@ -74,3 +74,9 @@ RUN set -x; \
         && echo 'export LANG=pt_BR.UTF-8' >> /opt/odoo/.bashrc \
         && echo 'export LANGUAGE=pt_BR:en_GB' >> /opt/odoo/.bashrc \
         && echo 'export LC_ALL=pt_BR.UTF-8' >> /opt/odoo/.bashrc
+#
+# Cache do buildout
+#
+RUN sudo -i -u odoo mkdir -p /opt/odoo/.buildout
+COPY default.cfg /opt/odoo/.buildout/
+
