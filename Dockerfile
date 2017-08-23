@@ -22,6 +22,7 @@ RUN set -x; \
             bzr \
             ca-certificates \
             cpp \
+	    cups \
             gcc \
             dpkg-dev \
             fontconfig \
