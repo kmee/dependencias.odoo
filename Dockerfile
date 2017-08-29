@@ -1,9 +1,9 @@
 FROM ubuntu:16.04
 MAINTAINER KMEE dev@kmee.com.br version:0.1
 
-COPY ["dependencias.sh", "usuario-odoo.sh", "/root/"]
-RUN sh /root/dependencias.sh && \
-    /root/usuario-odoo.sh
+COPY ["install-dependencies.sh", "create-odoo-user.sh", "/root/"]
+RUN sh /root/install-dependencies.sh && \
+    /root/create-odoo-user.sh
 
 WORKDIR /opt/odoo/
 USER odoo
