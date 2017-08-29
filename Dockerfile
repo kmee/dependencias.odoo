@@ -1,15 +1,10 @@
 FROM ubuntu:16.04
 MAINTAINER KMEE dev@kmee.com.br version:0.1
 
-COPY dependencias.sh /root/dependencias.sh
-RUN sh /root/dependencias.sh
-RUN set -x; adduser --system --quiet --shell=/bin/bash --home=/opt/odoo --gecos 'ODOO' --group odoo \
-        && touch /opt/odoo/.bashrc \
-        && echo 'export PATH=$PATH:/usr/local/bin' >> /opt/odoo/.bashrc \
-        && echo 'export TERM=xterm' >> /opt/odoo/.bashrc \
-        && echo 'export LANG=pt_BR.UTF-8' >> /opt/odoo/.bashrc \
-        && echo 'export LANGUAGE=pt_BR:en_GB' >> /opt/odoo/.bashrc \
-        && echo 'export LC_ALL=pt_BR.UTF-8' >> /opt/odoo/.bashrc
+COPY ["dependencias.sh", "usuario-odoo.sh", "/root/"]
+RUN sh /root/dependencias.sh && \
+    /root/usuario-odoo.sh
+
 WORKDIR /opt/odoo/
 USER odoo
 #
