@@ -34,7 +34,6 @@ apt-get update \
             gzip \
             zlib1g \
             sudo \
-            virtualenv \
             libffi-dev \
             expect-dev \
             libxml2-dev \
