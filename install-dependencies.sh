@@ -74,6 +74,7 @@ apt-get update \
             fonts-sil-gentium\
             fonts-texgyre\
             fonts-tlwg-purisa\
+            libssl-dev\
         && locale-gen en_US en_US.UTF-8 pt_BR.UTF-8 \
         && echo "CURL iniciando..." \
         && curl -o wkhtmltox.deb -SL http://nightly.odoo.com/extra/wkhtmltox-0.12.1.2_linux-jessie-amd64.deb \
