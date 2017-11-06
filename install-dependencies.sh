@@ -57,7 +57,7 @@ apt-get update \
             libreoffice-writer \
             libreoffice-core \
             libreoffice-common \
-            fonts-symbola \
+            fonts-font-awesome\
             fonts-symbola \
             fonts-opensymbol\
             fonts-dejavu\
@@ -75,6 +75,27 @@ apt-get update \
             fonts-texgyre\
             fonts-tlwg-purisa\
             libssl-dev\
+            autotools-dev\
+            cython\
+            debhelper\
+            dh-strip-nondeterminism\
+            docutils-common\
+            gfortran\
+            gfortran-5\
+            libblas-dev\
+            libfile-stripnondeterminism-perl\
+            libgfortran-5-dev\
+            libjs-modernizr\
+            libjs-sphinxdoc\
+            liblapack-dev\
+            libpython-all-dbg\
+            libpython-dbg\
+            libpython2.7-dbg\
+            libpython3-all-dbg\
+            libpython3-all-dev\
+            libpython3-dbg\
+            libpython3.5-dbg\
+            po-debconf\
         && locale-gen en_US en_US.UTF-8 pt_BR.UTF-8 \
         && echo "CURL iniciando..." \
         && curl -o wkhtmltox.deb -SL http://nightly.odoo.com/extra/wkhtmltox-0.12.1.2_linux-jessie-amd64.deb \
