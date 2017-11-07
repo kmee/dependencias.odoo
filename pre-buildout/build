@@ -2,6 +2,6 @@
 set -e
 pwd
 ls -lah
-wget https://raw.github.com/buildout/buildout/master/bootstrap/bootstrap.py
-python bootstrap.py
-./bin/buildout
+virtualenv -p python2 .
+bin/pip install -U zc.buildout pip
+bin/buildout
