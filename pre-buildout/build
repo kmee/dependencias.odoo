@@ -1,7 +1,0 @@
-#!/bin/bash
-set -e
-pwd
-ls -lah
-virtualenv -p python2 .
-bin/pip install -U zc.buildout pip
-bin/buildout
