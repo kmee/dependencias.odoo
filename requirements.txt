@@ -1,0 +1,56 @@
+# Camp2camp Cloud Plataform
+boto3==1.9.102
+redis==2.10.5
+python-json-logger==0.1.5
+statsd==3.2.1
+python-swiftclient==3.9.0
+python-keystoneclient==3.22.0
+keystoneauth1==3.14.0
+# error with 5.x (ConstructorError: could not determine a constructor for the tag '!record')
+PyYAML==4.2b4
+
+# base_geoengine dependency
+shapely
+geojson
+
+# py3o reports
+py3o.formats==0.3
+py3o.fusion==0.8.9
+py3o.renderclient==0.3
+py3o.renderers.juno==0.8
+py3o.renderserver==0.5.1
+py3o.template==0.10.0
+py3o.types==0.1.1
+
+
+# SAT
+cerberus==1.3.2
+future==0.18.2
+satcfe==2.1
+satcomum==2.1
+unidecode==1.2.0
+
+# Outros
+websocket-client
+odoorpc
+
+#l10n-brazil
+
+num2words==0.5.4
+pycep-correios==5.0.0
+workalendar==7.1.1
+erpbrasil.base==2.1.0
+erpbrasil.assinatura==1.1.0
+erpbrasil.transmissao==1.0.0
+erpbrasil.edoc==2.0.0
+erpbrasil.edoc.pdf==0.1.2
+nfselib.ginfes==0.2.0
+nfselib.issnet==0.2.0
+xmldiff==2.4
+lxml==4.6.3
+-e git+https://github.com/akretion/nfelib.git@master_gen_v4_00#egg=nfelib
+-e git+https://github.com/OCA/openupgradelib.git@master#egg=openupgradelib
+-e git://github.com/erpbrasil/febraban-python.git@v0.7.1#egg=febraban
+vcrpy
+odoo-test-helper
+
