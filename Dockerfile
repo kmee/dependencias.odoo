@@ -1,35 +1,22 @@
-FROM ubuntu:16.04
-MAINTAINER KMEE dev@kmee.com.br version:0.1
-
-COPY ["install-dependencies.sh", "create-odoo-user.sh", "/root/"]
+# https://hub.docker.com/r/camptocamp/odoo-project
+FROM camptocamp/odoo-project:12.0-buster-latest-batteries
 
 RUN apt-get update \
-        && apt-get install wget curl software-properties-common -y \
-        && add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main" \
-        && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+    && apt-get install -y --no-install-recommends nano wget git tig libxmlsec1-dev build-essential python3-dev locales swig3.0 fonts-symbola libreoffice \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN sh /root/install-dependencies.sh && \
-    /root/create-odoo-user.sh
+RUN ln -s /usr/bin/swig3.0 /usr/bin/swig
 
-WORKDIR /opt/odoo/
-USER odoo
-#
-# Buildout default file for cache eggs!
-#
-RUN mkdir -p .buildout
-COPY pre-buildout/default.cfg .buildout/default.cfg
-#
-# Run the buildout just to fill .buildout/eggs with Odoo Eggs!
-# We must have the the odoo deployed in Q&A
-#
-# In one or two minutes after a commit
-#
-RUN mkdir -p /tmp/workspace
-ADD pre-buildout/* /tmp/workspace/
-WORKDIR /tmp/workspace/
-RUN sh build
-#
-# Clean tmp folder!
-#
-WORKDIR /opt/odoo
-RUN rm -rf /tmp/workspace/
+RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
+    sed -i -e 's/# pt_BR.UTF-8 UTF-8/pt_BR.UTF-8 UTF-8/' /etc/locale.gen && \
+    dpkg-reconfigure --frontend=noninteractive locales && \
+    update-locale LANG=en_US.UTF-8
+
+ENV LANG en_US.UTF-8
+
+COPY ./src /odoo/src
+RUN pip install -e /odoo/src
+
+COPY ./requirements.txt /odoo/requirements.txt
+RUN pip install -r /odoo/requirements.txt
