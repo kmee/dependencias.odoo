@@ -2,7 +2,7 @@
 FROM camptocamp/odoo-project:12.0-buster-latest-batteries
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends nano wget git tig libxmlsec1-dev build-essential python3-dev locales swig3.0 fonts-symbola libreoffice \
+    && apt-get install -y --no-install-recommends nano wget git tig build-essential python3-dev locales swig3.0 fonts-symbola libreoffice python3-wheel expect-dev python-lxml libxml2-dev libxmlsec1-dev libxslt-dev libxmlsec1-openssl pkg-config \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
